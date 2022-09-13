@@ -1,0 +1,13 @@
+# of_id = generic-uio,ui_pdrv
+# verbose = 0
+
+[uio_my_gpio]
+# instruct uinth to also get the GPIO value
+flags = 1
+cmd = echo Interrupt my_gpio with value %d
+
+[uio_my_regular_interrupt]
+cmd = echo my_regular_interrupt triggered
+
+[uio_my_other_interrupt]
+# only a message is sent to stdout
