@@ -130,9 +130,9 @@ int main(void) {
 	struct gpioline_info line_info;
 	
 	
-	verbose = (int) getenv("UINTH_VERBOSE");
+	verbose = getenv("UINTH_VERBOSE") != 0;
 	
-	if (read_config("uinth.cfg")) {
+	if (read_config(SYSCONFDIR "uinth.cfg")) {
 		fprintf(stderr, "reading config failed\n");
 		return -1;
 	}
@@ -352,6 +352,9 @@ int main(void) {
 								if (cint->cmd) {
 									snprintf(buf, sizeof(buf), cint->cmd, data.values[0]);
 									system(buf);
+									
+									if (verbose)
+										printf("int: %s GPIO value: %d\n", cint->id, data.values[0]);
 								} else {
 									printf("int: %s GPIO value: %d\n", cint->id, data.values[0]);
 								}
@@ -359,6 +362,9 @@ int main(void) {
 						} else {
 							if (cint->cmd) {
 								system(cint->cmd);
+								
+								if (verbose)
+									printf("int: %s\n", cint->id);
 							} else {
 								printf("int: %s\n", cint->id);
 							}
