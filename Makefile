@@ -3,10 +3,10 @@ app=uinth
 
 CFLAGS+=-Wall
 
-prefix=/usr/local
-exec_prefix=$(prefix)
-bindir=$(exec_prefix)/bin
-sysconfdir=$(prefix)/etc/
+prefix?=/usr/local
+exec_prefix?=$(prefix)
+bindir?=$(exec_prefix)/bin
+sysconfdir?=$(prefix)/etc/
 
 CFLAGS+=-DSYSCONFDIR=\"$(sysconfdir)\"
 
