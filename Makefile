@@ -6,7 +6,7 @@ CFLAGS+=-Wall
 prefix?=/usr/local
 exec_prefix?=$(prefix)
 bindir?=$(exec_prefix)/bin
-sysconfdir?=$(prefix)/etc/
+sysconfdir?=/etc/
 
 CFLAGS+=-DSYSCONFDIR=\"$(sysconfdir)\"
 
@@ -16,7 +16,7 @@ all: $(app)
 
 $(app): uinth.c
 
-install:
+install: $(app) Makefile
 	install -d "$(DESTDIR)/$(bindir)"
 	install -m 0755 uinth "$(DESTDIR)/$(bindir)"
 
