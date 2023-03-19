@@ -12,6 +12,7 @@ As example, the following entries could be used:
 ```
 / {
 	[...]
+	
 	uio_my_gpio@0 {
 		compatible = "generic-uio,ui_pdrv";
 		status = "okay";
@@ -38,6 +39,14 @@ As example, the following entries could be used:
 
 The `gpiopath` property in `uio_my_gpio@0` is a custom link for uinth to find
 the corresponding GPIO entry as it is not easy to find a single GPIO by name.
+
+The `compatible` string in the device tree can be chosen freely. However, it has
+to match the `of_id` parameter of the `uio_pdrv_genirq` module. For the example
+above, the corresponding kernel parameter would look like:
+
+```
+uio_pdrv_genirq.of_id="generic-uio,ui_pdrv"
+```
 
 The corresponding `uinth.cfg` could look like this:
 
