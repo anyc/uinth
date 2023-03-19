@@ -150,7 +150,7 @@ int main(void) {
 		fd = open(buf, O_RDONLY);
 		if (fd < 0) {
 			fprintf(stderr, "error opening uio sysfs (%s): %s\n", buf, strerror(errno));
-			return -errno;
+			continue;
 		}
 		
 		memset(buf, 0, sizeof(buf));
